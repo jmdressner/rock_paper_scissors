@@ -6,20 +6,13 @@ using System.Threading.Tasks;
 
 namespace RockPapperScissors
 {
-    class Game
+    class Person1 : Player
     {
         // member variables
 
-        public Player player;
-        public Human human;
-        public Computer computer;
-        
-
-        public Game()
+        public Person1(string name)
         {
-            player = new Player();
-            human = new Human("");
-            computer = new Computer("");
+            this.name = name;
         }
 
         // member methods
