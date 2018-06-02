@@ -11,8 +11,7 @@ namespace RockPapperScissors
         static void Main(string[] args)
         {
             Game myGame = new Game();
-            myGame.person1.SetName();
-            myGame.person2.SetName();
+            myGame.RunGame();
 
 
 

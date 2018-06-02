@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace RockPapperScissors
 {
-    class Person2 : Player
+    class Computer : Player
     {
         // member variables
 
-        public Person2(string name)
+        public string computerGesture;
+
+        public Computer(string name)
         {
             this.name = name;
         }
@@ -19,9 +21,19 @@ namespace RockPapperScissors
 
         public override void DisplayName()
         {
-            Console.WriteLine("Person2: "+ name);
+            Console.WriteLine("Player 2 is the computer.");
             Console.ReadLine();
         }
 
+        public override string MakeGestureChoice()
+        {
+            Random randNum = new Random();
+            int index = randNum.Next(0, 5);
+            string value = gestures[index];
+            Console.WriteLine("The computer picked "+ value);
+            Console.ReadLine();
+
+            return "";
+        }
     }
 }
