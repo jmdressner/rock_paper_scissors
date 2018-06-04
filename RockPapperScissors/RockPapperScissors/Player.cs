@@ -11,7 +11,6 @@ namespace RockPapperScissors
         // member variables
 
         public string name;
-        public int roundsWon;
         public List<string> gestures = new List<string>() {"rock", "paper", "scissors", "lizard", "spock"};
 
         public Player()

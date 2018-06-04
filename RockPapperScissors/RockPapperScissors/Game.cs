@@ -12,8 +12,10 @@ namespace RockPapperScissors
 
         public Player player1;
         public Player player2;
-        public string player1Score;
-        public string player2Score;
+        public string player1Gesture;
+        public string player2Gesture;
+        public int player1Score = 0;
+        public int player2Score = 0;
         public string input;
         
 
@@ -49,9 +51,11 @@ namespace RockPapperScissors
                 player2 = new Computer("Brian");
             }
 
-            player1Score = player1.MakeGestureChoice();
-            player2Score = player2.MakeGestureChoice();
-            CompareGestureChoice();
+            GameRounds();
+
+            DisplayWinner();
+
+            
 
             // start best of three - loop
             // player 1 make choice- save answers (member variable to hold this result)
@@ -63,103 +67,121 @@ namespace RockPapperScissors
 
         }
 
-        public string CompareGestureChoice()
+        public void CompareGestureChoice()
         {
-        switch (player1Score)
+            if (player1Gesture == player2Gesture)
             {
-                case "rock":
-                    if (player2Score == "scissors" || player2Score == "lizard")
-                    {
-                        Console.WriteLine("Player 1 won");
-                        Console.ReadLine();
-                    }
-                    else if (player2Score == "rock")
-                    {
-                        Console.WriteLine("There was a tie");
-                        Console.ReadLine();
-                    }
-                    else
-                    {
-                        Console.WriteLine("Player 2 won");
-                        Console.ReadLine();
-                    }
-                    break;
-                case "paper":
-                    if (player2Score == "rock" || player2Score == "spock")
-                    {
-                        Console.WriteLine("Player 1 won");
-                        Console.ReadLine();
-                    }
-                    else if (player2Score == "paper")
-                    {
-                        Console.WriteLine("There was a tie");
-                        Console.ReadLine();
-                    }
-                    else
-                    {
-                        Console.WriteLine("Player 2 won");
-                        Console.ReadLine();
-                    }
-                    break;
-                case "scissors":
-                    if (player2Score == "paper" || player2Score == "lizard")
-                    {
-                        Console.WriteLine("Player 1 won");
-                        Console.ReadLine();
-                    }
-                    else if (player2Score == "scissors")
-                    {
-                        Console.WriteLine("There was a tie");
-                        Console.ReadLine();
-                    }
-                    else
-                    {
-                        Console.WriteLine("Player 2 won");
-                        Console.ReadLine();
-                    }
-                    break;
-                case "lizard":
-                    if (player2Score == "spock" || player2Score == "paper")
-                    {
-                        Console.WriteLine("Player 1 won");
-                        Console.ReadLine();
-                    }
-                    else if (player2Score == "lizard")
-                    {
-                        Console.WriteLine("There was a tie");
-                        Console.ReadLine();
-                    }
-                    else
-                    {
-                        Console.WriteLine("Player 2 won");
-                        Console.ReadLine();
-                    }
-                    break;
-                case "spock":
-                    if (player2Score == "scissors" || player2Score == "rock")
-                    {
-                        Console.WriteLine("Player 1 won");
-                        Console.ReadLine();
-                    }
-                    else if (player2Score == "spock")
-                    {
-                        Console.WriteLine("There was a tie");
-                        Console.ReadLine();
-                    }
-                    else
-                    {
-                        Console.WriteLine("Player 2 won");
-                        Console.ReadLine();
-                    }
-                    break;
-                default:
+                Console.WriteLine("There was a tie.");
+                Console.ReadLine();
+            }
+            else
+            {
+
+                switch (player1Gesture)
+                {
+                    case "rock":
+                        if (player2Gesture == "scissors" || player2Gesture == "lizard")
+                        {
+                            player1Score += 1;
+                            Console.WriteLine("Player 1 won");
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            player2Score += 1;
+                            Console.WriteLine("Player 2 won");
+                            Console.ReadLine();
+                        }
+                        break;
+                    case "paper":
+                        if (player2Gesture == "rock" || player2Gesture == "spock")
+                        {
+                            player1Score += 1;
+                            Console.WriteLine("Player 1 won");
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            player2Score += 1;
+                            Console.WriteLine("Player 2 won");
+                            Console.ReadLine();
+                        }
+                        break;
+                    case "scissors":
+                        if (player2Gesture == "paper" || player2Gesture == "lizard")
+                        {
+                            player1Score += 1;
+                            Console.WriteLine("Player 1 won");
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            player2Score += 1;
+                            Console.WriteLine("Player 2 won");
+                            Console.ReadLine();
+                        }
+                        break;
+                    case "lizard":
+                        if (player2Gesture == "spock" || player2Gesture == "paper")
+                        {
+                            player1Score += 1;
+                            Console.WriteLine("Player 1 won");
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            player2Score += 1;
+                            Console.WriteLine("Player 2 won");
+                            Console.ReadLine();
+                        }
+                        break;
+                    case "spock":
+                        if (player2Gesture == "scissors" || player2Gesture == "rock")
+                        {
+                            player1Score += 1;
+                            Console.WriteLine("Player 1 won");
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            player2Score += 1;
+                            Console.WriteLine("Player 2 won");
+                            Console.ReadLine();
+                        }
+                        break;
+                    default:
                         Console.WriteLine("There was an error and no result could be reached.");
                         Console.ReadLine();
-                    break;
+                        break;
+                }
             }
-                return "";
         }
 
+        public void GameRounds()
+        {
+            while (player1Score <= 2 || player2Score <= 2)
+            {
+                player1Gesture = player1.MakeGestureChoice();
+                player2Gesture = player2.MakeGestureChoice();
+                CompareGestureChoice();
+            }
+            
+        }
 
+        public void DisplayWinner()
+        {
+            if (player1Score >= 2)
+            {
+                Console.WriteLine("Player 1 won best of three!");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("Player 2 won best of three!");
+                Console.ReadLine();
+            }
+
+        }
+       
     }
 }
