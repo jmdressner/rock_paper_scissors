@@ -17,6 +17,7 @@ namespace RockPapperScissors
         public int player1Score = 0;
         public int player2Score = 0;
         public string input;
+        public int roundsWon = 0;
         
 
         public Game()
@@ -85,12 +86,14 @@ namespace RockPapperScissors
                             player1Score += 1;
                             Console.WriteLine("Player 1 won");
                             Console.ReadLine();
+                            roundsWon += 1;
                         }
                         else
                         {
                             player2Score += 1;
                             Console.WriteLine("Player 2 won");
                             Console.ReadLine();
+                            roundsWon += 1;
                         }
                         break;
                     case "paper":
@@ -99,12 +102,14 @@ namespace RockPapperScissors
                             player1Score += 1;
                             Console.WriteLine("Player 1 won");
                             Console.ReadLine();
+                            roundsWon += 1;
                         }
                         else
                         {
                             player2Score += 1;
                             Console.WriteLine("Player 2 won");
                             Console.ReadLine();
+                            roundsWon += 1;
                         }
                         break;
                     case "scissors":
@@ -113,12 +118,14 @@ namespace RockPapperScissors
                             player1Score += 1;
                             Console.WriteLine("Player 1 won");
                             Console.ReadLine();
+                            roundsWon += 1;
                         }
                         else
                         {
                             player2Score += 1;
                             Console.WriteLine("Player 2 won");
                             Console.ReadLine();
+                            roundsWon += 1;
                         }
                         break;
                     case "lizard":
@@ -127,12 +134,14 @@ namespace RockPapperScissors
                             player1Score += 1;
                             Console.WriteLine("Player 1 won");
                             Console.ReadLine();
+                            roundsWon += 1;
                         }
                         else
                         {
                             player2Score += 1;
                             Console.WriteLine("Player 2 won");
                             Console.ReadLine();
+                            roundsWon += 1;
                         }
                         break;
                     case "spock":
@@ -141,12 +150,14 @@ namespace RockPapperScissors
                             player1Score += 1;
                             Console.WriteLine("Player 1 won");
                             Console.ReadLine();
+                            roundsWon += 1;
                         }
                         else
                         {
                             player2Score += 1;
                             Console.WriteLine("Player 2 won");
                             Console.ReadLine();
+                            roundsWon += 1;
                         }
                         break;
                     default:
@@ -159,7 +170,7 @@ namespace RockPapperScissors
 
         public void GameRounds()
         {
-            while (player1Score <= 2 || player2Score <= 2)
+            while (roundsWon < 3)
             {
                 player1Gesture = player1.MakeGestureChoice();
                 player2Gesture = player2.MakeGestureChoice();
