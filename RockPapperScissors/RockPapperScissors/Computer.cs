@@ -33,7 +33,7 @@ namespace RockPapperScissors
             Console.WriteLine("The computer picked "+ value);
             Console.ReadLine();
 
-            return "";
+            return value;
         }
     }
 }

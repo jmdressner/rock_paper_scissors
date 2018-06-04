@@ -36,10 +36,7 @@ namespace RockPapperScissors
 
         public abstract string MakeGestureChoice();
 
-        public void CompareGestureChoice(string player1Score, string player2Score)
-        {
-
-        }
+        
 
     }
 }
