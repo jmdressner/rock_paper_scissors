@@ -22,7 +22,7 @@ namespace RockPapperScissors
         public override string MakeGestureChoice()
         {
             Random randNum = new Random();
-            int index = randNum.Next(0, 5);
+            int index = randNum.Next(0, 4);
             string computerGesture = gestures[index];
             Console.WriteLine("The computer chose " + computerGesture);
 
