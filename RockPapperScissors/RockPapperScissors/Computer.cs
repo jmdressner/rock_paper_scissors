@@ -11,6 +11,7 @@ namespace RockPapperScissors
         public Computer(string name)
         {
             this.name = name;
+            this.gestureNumber = 0;
         }
 
         public override void DisplayName()
@@ -19,14 +20,15 @@ namespace RockPapperScissors
             Console.ReadLine();
         }
 
-        public override string MakeGestureChoice()
+        public override int MakeGestureChoice()
         {
             Random randNum = new Random();
             int index = randNum.Next(0, 4);
             string computerGesture = gestures[index];
             Console.WriteLine("The computer chose " + computerGesture);
+            gestureNumber = gestures.IndexOf(computerGesture);
 
-            return computerGesture;
+            return gestureNumber;
         }
     }
 }

@@ -10,8 +10,9 @@ namespace RockPapperScissors
     {
         public string name;
         public string gesture;
+        public int gestureNumber;
         public int score;
-        public List<string> gestures = new List<string>() {"rock", "paper", "scissors", "lizard", "spock"};
+        public List<string> gestures = new List<string>() {"rock", "paper", "scissors", "spock", "lizard"};
 
         public Player()
         {
@@ -32,6 +33,6 @@ namespace RockPapperScissors
             DisplayName();
         }
 
-        public abstract string MakeGestureChoice();
+        public abstract int MakeGestureChoice();
     }
 }

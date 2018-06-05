@@ -13,16 +13,17 @@ namespace RockPapperScissors
         public Human(string name)
         {
             this.name = name;
+            this.gestureNumber = 0;
         }
 
-        public override string MakeGestureChoice()
+        public override int MakeGestureChoice()
         {
             Console.WriteLine("What gesture would you like to make? Please enter one choice: 'Rock', 'Paper', 'Scissors', 'Lizard', 'Spock'.");
             gestureInput = Console.ReadLine().ToLower();
 
                 if (gestures.Contains(gestureInput))
                 {
-                return gestureInput;
+                gestureNumber = gestures.IndexOf(gestureInput);
                 }
                 else
                 {
@@ -30,7 +31,7 @@ namespace RockPapperScissors
                     Console.ReadLine();
                     MakeGestureChoice();                                   
                 }
-            return gestureInput;
+            return gestureNumber;
         }
     }
 }
