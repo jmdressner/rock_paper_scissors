@@ -12,11 +12,6 @@ namespace RockPapperScissors
         {
             Game myGame = new Game();
             myGame.RunGame();
-
-
-
-
-
         }
     }
 }

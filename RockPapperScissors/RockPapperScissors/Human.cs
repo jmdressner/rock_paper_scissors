@@ -8,16 +8,12 @@ namespace RockPapperScissors
 {
     class Human : Player
     {
-        // member variables
-
         public string gestureInput;
 
         public Human(string name)
         {
             this.name = name;
         }
-
-        // member methods
 
         public override string MakeGestureChoice()
         {
@@ -26,9 +22,6 @@ namespace RockPapperScissors
 
                 if (gestures.Contains(gestureInput))
                 {
-                    Console.WriteLine("You picked: "+ gestureInput);
-                    Console.ReadLine();
-                    
                 }
                 else
                 {

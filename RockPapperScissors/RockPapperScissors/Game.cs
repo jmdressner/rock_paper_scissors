@@ -7,155 +7,136 @@ using System.Threading.Tasks;
 namespace RockPapperScissors
 {
     class Game
-    {
-        // member variables
-
+    { 
         public Player player1;
         public Player player2;
-        public string player1Gesture;
-        public string player2Gesture;
-        public int player1Score = 0;
-        public int player2Score = 0;
-        public string input;
-        public int roundsWon = 0;
+        public string player2Choice;
+        public int roundsWon;
         
-
         public Game()
         {
-           
+            player1 = new Human("");
         }
-
-        // member methods
 
         public void RunGame()
         {
-            player1 = new Human("");
             player1.SetName();
-            Console.WriteLine("Would you like to enter a second player or play against the computer? Please enter 'human' or 'computer'.");
-            input = Console.ReadLine().ToLower();
+            SetPlayer2();
+            GameRounds();
+            DisplayWinner();
+            PlayGameAgain();
+        }
 
-            if (input == "human")
+        public void SetPlayer2()
+        {
+            Console.WriteLine("Would you like to enter a second player or play against the computer? Please enter 'human' or 'computer'.");
+            player2Choice = Console.ReadLine().ToLower();
+
+            if (player2Choice == "human")
             {
                 player2 = new Human("");
                 player2.SetName();
- 
             }
-            else if (input == "computer")
+            else if (player2Choice == "computer")
             {
-                player2 = new Computer("Brian");
+                player2 = new Computer("The computer");
                 player2.DisplayName();
             }
             else
             {
-                Console.WriteLine("That is not a valid input.  The computer will be your oponent");
+                Console.WriteLine("That is not a valid input. Press enter to continue.");
                 Console.ReadLine();
-                player2 = new Computer("Brian");
+                SetPlayer2();
             }
-
-            GameRounds();
-
-            DisplayWinner();
-
-            
-
-            // start best of three - loop
-            // player 1 make choice- save answers (member variable to hold this result)
-            // player 2 makes choice
-            // compare choices -method 
-            // display winner- method
-            // updates the rounds won
-            // display the winner (2/3)
-
         }
 
         public void CompareGestureChoice()
         {
-            if (player1Gesture == player2Gesture)
+            if (player1.gesture == player2.gesture)
             {
                 Console.WriteLine("There was a tie.");
                 Console.ReadLine();
             }
             else
             {
-
-                switch (player1Gesture)
+                switch (player1.gesture)
                 {
                     case "rock":
-                        if (player2Gesture == "scissors" || player2Gesture == "lizard")
+                        if (player2.gesture == "scissors" || player2.gesture == "lizard")
                         {
-                            player1Score += 1;
-                            Console.WriteLine("Player 1 won");
+                            player1.score += 1;
+                            Console.WriteLine(player1.name + " won round " + (roundsWon + 1));
                             Console.ReadLine();
                             roundsWon += 1;
                         }
                         else
                         {
-                            player2Score += 1;
-                            Console.WriteLine("Player 2 won");
+                            player2.score += 1;
+                            Console.WriteLine(player2.name + " won round " + (roundsWon + 1));
                             Console.ReadLine();
                             roundsWon += 1;
                         }
                         break;
                     case "paper":
-                        if (player2Gesture == "rock" || player2Gesture == "spock")
+                        if (player2.gesture == "rock" || player2.gesture == "spock")
                         {
-                            player1Score += 1;
-                            Console.WriteLine("Player 1 won");
+                            player1.score += 1;
+                            Console.WriteLine(player1.name + " won round " + (roundsWon + 1));
                             Console.ReadLine();
                             roundsWon += 1;
                         }
                         else
                         {
-                            player2Score += 1;
-                            Console.WriteLine("Player 2 won");
+                            player2.score += 1;
+                            Console.WriteLine(player2.name + " won round " + (roundsWon + 1));
                             Console.ReadLine();
                             roundsWon += 1;
                         }
                         break;
                     case "scissors":
-                        if (player2Gesture == "paper" || player2Gesture == "lizard")
+                        if (player2.gesture == "paper" || player2.gesture == "lizard")
                         {
-                            player1Score += 1;
-                            Console.WriteLine("Player 1 won");
+                            player1.score += 1;
+                            Console.WriteLine(player1.name + " won round " + (roundsWon + 1));
                             Console.ReadLine();
                             roundsWon += 1;
                         }
                         else
                         {
-                            player2Score += 1;
-                            Console.WriteLine("Player 2 won");
+                            player2.score += 1;
+                            Console.WriteLine(player2.name + " won round " + (roundsWon + 1));
                             Console.ReadLine();
                             roundsWon += 1;
                         }
                         break;
                     case "lizard":
-                        if (player2Gesture == "spock" || player2Gesture == "paper")
+                        if (player2.gesture == "spock" || player2.gesture == "paper")
                         {
-                            player1Score += 1;
-                            Console.WriteLine("Player 1 won");
+                            player1.score += 1;
+                            Console.WriteLine(player1.name + " won round " + (roundsWon + 1));
                             Console.ReadLine();
                             roundsWon += 1;
                         }
                         else
                         {
-                            player2Score += 1;
-                            Console.WriteLine("Player 2 won");
+                            player2.score += 1;
+                            Console.WriteLine(player2.name + " won round " + (roundsWon + 1));
                             Console.ReadLine();
                             roundsWon += 1;
                         }
                         break;
                     case "spock":
-                        if (player2Gesture == "scissors" || player2Gesture == "rock")
+                        if (player2.gesture == "scissors" || player2.gesture == "rock")
                         {
-                            player1Score += 1;
-                            Console.WriteLine("Player 1 won");
+                            player1.score += 1;
+                            Console.WriteLine(player1.name + " won round " + (roundsWon + 1));
                             Console.ReadLine();
                             roundsWon += 1;
                         }
                         else
                         {
-                            player2Score += 1;
-                            Console.WriteLine("Player 2 won");
+                            player2.score += 1;
+                            Console.WriteLine(player2.name + " won round " + (roundsWon + 1));
                             Console.ReadLine();
                             roundsWon += 1;
                         }
@@ -172,27 +153,46 @@ namespace RockPapperScissors
         {
             while (roundsWon < 3)
             {
-                player1Gesture = player1.MakeGestureChoice();
-                player2Gesture = player2.MakeGestureChoice();
+                player1.gesture = player1.MakeGestureChoice();
+                player2.gesture = player2.MakeGestureChoice();
                 CompareGestureChoice();
-            }
-            
+            } 
         }
 
         public void DisplayWinner()
         {
-            if (player1Score >= 2)
+            if (player1.score >= 2)
             {
-                Console.WriteLine("Player 1 won best of three!");
+                Console.WriteLine(player1.name + " won best of three rounds!");
                 Console.ReadLine();
             }
             else
             {
-                Console.WriteLine("Player 2 won best of three!");
+                Console.WriteLine(player2.name + " won best of three rounds!");
                 Console.ReadLine();
             }
-
         }
-       
+
+        public void PlayGameAgain()
+        {
+            Console.WriteLine("Would you like to play again? Please enter 'Yes' or 'No'.");
+            string playerInput = Console.ReadLine().ToLower();
+            
+            if (playerInput == "yes")
+            {
+                Game anotherGame = new Game();
+                anotherGame.RunGame();
+            }
+            else if (playerInput == "no")
+            {
+                Environment.Exit(1);
+            }
+            else
+            {
+                Console.WriteLine("That was not a valid input. Please press enter to continue.");
+                Console.ReadLine();
+                PlayGameAgain();
+            }
+        }
     }
 }

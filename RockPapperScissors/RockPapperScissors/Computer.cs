@@ -8,16 +8,10 @@ namespace RockPapperScissors
 {
     class Computer : Player
     {
-        // member variables
-
-        public string computerGesture;
-
         public Computer(string name)
         {
             this.name = name;
         }
-
-        // member methods
 
         public override void DisplayName()
         {
@@ -29,11 +23,10 @@ namespace RockPapperScissors
         {
             Random randNum = new Random();
             int index = randNum.Next(0, 5);
-            string value = gestures[index];
-            Console.WriteLine("The computer picked "+ value);
-            Console.ReadLine();
+            string computerGesture = gestures[index];
+            Console.WriteLine("The computer chose " + computerGesture);
 
-            return value;
+            return computerGesture;
         }
     }
 }

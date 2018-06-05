@@ -8,17 +8,16 @@ namespace RockPapperScissors
 {
     public abstract class Player
     {
-        // member variables
-
         public string name;
+        public string gesture;
+        public int score;
         public List<string> gestures = new List<string>() {"rock", "paper", "scissors", "lizard", "spock"};
 
         public Player()
         {
-            
+            this.score = 0;
+            this.gesture = "";
         }
-
-        // member methods
 
         public virtual void DisplayName()
         {
@@ -34,8 +33,5 @@ namespace RockPapperScissors
         }
 
         public abstract string MakeGestureChoice();
-
-        
-
     }
 }
