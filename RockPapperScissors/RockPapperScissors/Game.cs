@@ -10,7 +10,6 @@ namespace RockPapperScissors
     { 
         public Player player1;
         public Player player2;
-        public string player2Choice;
         public int roundsWon;
         
         public Game()
@@ -20,6 +19,7 @@ namespace RockPapperScissors
 
         public void RunGame()
         {
+            roundsWon = 0;
             player1.SetName();
             SetPlayer2();
             GameRounds();
@@ -30,7 +30,7 @@ namespace RockPapperScissors
         public void SetPlayer2()
         {
             Console.WriteLine("Would you like to enter a second player or play against the computer? Please enter 'human' or 'computer'.");
-            player2Choice = Console.ReadLine().ToLower();
+            string player2Choice = Console.ReadLine().ToLower();
 
             if (player2Choice == "human")
             {
@@ -180,8 +180,7 @@ namespace RockPapperScissors
             
             if (playerInput == "yes")
             {
-                Game anotherGame = new Game();
-                anotherGame.RunGame();
+                RunGame();
             }
             else if (playerInput == "no")
             {

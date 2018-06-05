@@ -22,6 +22,7 @@ namespace RockPapperScissors
 
                 if (gestures.Contains(gestureInput))
                 {
+                return gestureInput;
                 }
                 else
                 {
